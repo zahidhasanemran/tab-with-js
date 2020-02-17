@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab by JS </title>
+
+    <style>
+        .tab{
+            width: 760px;
+            margin: 0 auto;
+        }
+        .tab__buttons{
+            display: flex;
+        }
+        .tab__buttons button{
+            margin-right: 20px;
+            background: rgb(5, 146, 189);
+            color: #FFF;
+            cursor: pointer;
+            display: block;
+            border: none;
+            outline: 0;
+            height: 30px;
+            min-width: 150px;
+        }
+        .tab__buttons button.active{
+            background: #000;
+            color: #fff;
+        }
+        .tab__pannel{
+            margin-top: 30px;
+            background: skyblue;
+            color: #fff;
+            min-height: 300px;
+            font-size: 32px;
+            box-sizing: border-box;
+            padding: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab__buttons">
+            <button class="active">Tab 1.0 </button>
+            <button>Tab 2.0 </button>
+            <button>Tab 3.0 </button>
+            <button>Tab 4.0 </button>
+        </div>
+        <div class="tab__pannel">Content for Tab 1.0</div>
+        <div class="tab__pannel">Content for Tab 2.0</div>
+        <div class="tab__pannel">Content for Tab 3.0</div>
+        <div class="tab__pannel">Content for Tab 4.0</div>
+    </div>
+
+
+
+
+
+    <script>
+
+        var buttons = document.querySelectorAll("button");
+        var pannels = document.querySelectorAll(".tab__pannel");
+
+        function reset(){
+            for(let a = 0; a < pannels.length; a ++){
+                pannels[a].style.display = "none";
+                buttons[a].classList.remove("active");
+            }
+        }
+        
+        
+
+        function firstTab(){
+            reset();
+            pannels[0].style.display = "block";
+            buttons[0].classList.add("active");
+        }
+        firstTab();
+
+
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].addEventListener("click", function(){
+                reset();
+                pannels[i].style.display = "block";
+                this.classList.add("active");
+            })
+        }
+
+    </script>
+</body>
+</html>
